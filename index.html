@@ -579,6 +579,394 @@
       font-size: 0.8rem;
     }
 
+    /* ========== PROJECTS SECTION ========== */
+    .projects-section {
+      background: var(--section-bg);
+      border-radius: 20px;
+      margin: 30px 20px;
+      padding: 60px 20px;
+    }
+
+    .projects-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    
+    .project-filter-btn {
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid var(--border-color);
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    
+    .project-filter-btn.active,
+    .project-filter-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .project-image-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-view-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .project-view-btn:hover {
+      background: var(--accent-light);
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-category {
+      display: inline-block;
+      background: rgba(49, 130, 206, 0.1);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      align-self: flex-start;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .project-details {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .project-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .project-detail-item i {
+      color: var(--accent);
+      width: 16px;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .project-client {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-client i {
+      color: var(--accent);
+    }
+
+    .project-year {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Project Modal */
+    .project-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 20px;
+    }
+
+    .project-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .project-modal-content {
+      background: white;
+      border-radius: 15px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .project-modal.active .project-modal-content {
+      transform: scale(1);
+    }
+
+    .close-project-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .close-project-modal:hover {
+      background: var(--accent);
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .project-modal-body {
+      padding: 40px;
+    }
+
+    .project-modal-images {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .project-modal-images {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .modal-main-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-secondary-image {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-modal-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .project-modal-description {
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .project-modal-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 25px;
+      padding: 25px;
+      background: var(--section-bg);
+      border-radius: 10px;
+    }
+
+    .modal-detail-item h4 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .modal-detail-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .project-challenges {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff8e1;
+      border-radius: 10px;
+      border-left: 4px solid var(--warning);
+    }
+
+    .project-challenges h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-solutions {
+      margin-top: 30px;
+      padding: 20px;
+      background: #e8f5e9;
+      border-radius: 10px;
+      border-left: 4px solid var(--success);
+    }
+
+    .project-solutions h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn-view-catalog {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-view-catalog:hover {
+      background: var(--secondary);
+    }
+
     /* Product Filter */
     .catalog-filter {
       display: flex;
@@ -2012,7 +2400,8 @@
       .btn,
       .mobile-menu-btn,
       .success-modal,
-      .gallery-modal {
+      .gallery-modal,
+      .project-modal {
         display: none !important;
       }
 
@@ -2171,6 +2560,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#products">Products</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#inquiry">Get Quote</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -2245,6 +2635,16 @@
   </div>
 </div>
 
+<!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+  <div class="project-modal-content">
+    <button class="close-project-modal" onclick="closeProjectModal()">&times;</button>
+    <div class="project-modal-body" id="projectModalBody">
+      <!-- Project content will be loaded here dynamically -->
+    </div>
+  </div>
+</div>
+
 <!-- Home Section -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
@@ -2257,8 +2657,8 @@
         <a href="#inquiry" class="btn">
           <i class="fas fa-paper-plane"></i> Get Quote Now
         </a>
-        <a href="#products" class="btn btn-outline">
-          <i class="fas fa-box-open"></i> View Products
+        <a href="#projects" class="btn btn-outline">
+          <i class="fas fa-images"></i> View Projects
         </a>
       </div>
       
@@ -2441,7 +2841,7 @@
   </div>
 </section>
 
-<!-- Products Section - ENHANCED WITH MULTI-IMAGE GALLERIES -->
+<!-- Products Section -->
 <section id="products" class="container">
   <div class="section-title">
     <h2>Our <span class="title-accent">Collections</span></h2>
@@ -2465,6 +2865,12 @@
     <button class="filter-btn" data-filter="home">
       <i class="fas fa-bed"></i> Home Textiles
     </button>
+ <button class="filter-btn" data-filter="sportswear">
+      <i class="fas fa-running"></i> Sports Wear
+    </button>
+    <button class="filter-btn" data-filter="underwire">
+      <i class="fas fa-female"></i> Ladies Underwire
+    </button>
   </div>
 
   <!-- Product Grid -->
@@ -2472,9 +2878,7 @@
     <!-- T-Shirts -->
     <div class="service-box" data-category="tops" id="t_shirts">
       <div class="product-badge">Best Seller</div>
-      <div class="service-icon">
-        <i class="fas fa-tshirt"></i>
-      </div>
+      
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="tshirts">
@@ -2509,9 +2913,7 @@
 
     <!-- Polo Shirts -->
     <div class="service-box" data-category="tops" id="polo_shirts">
-      <div class="service-icon">
-        <i class="fas fa-user-tie"></i>
-      </div>
+      
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="polo">
@@ -2547,9 +2949,7 @@
     <!-- Hoodies -->
     <div class="service-box" data-category="outerwear" id="hoodies">
       <div class="product-badge">Winter Collection</div>
-      <div class="service-icon">
-        <i class="fas fa-hoodie"></i>
-      </div>
+      
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="hoodies">
@@ -2584,9 +2984,7 @@
 
     <!-- Sweat Shirts -->
     <div class="service-box" data-category="outerwear" id="sweat_shirts">
-      <div class="service-icon">
-        <i class="fas fa-vest"></i>
-      </div>
+ 
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="sweatshirts">
@@ -2621,9 +3019,7 @@
 
     <!-- Fashion Pants -->
     <div class="service-box" data-category="bottoms" id="fashion_pants">
-      <div class="service-icon">
-        <i class="fas fa-socks"></i>
-      </div>
+     
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="pants">
@@ -2658,9 +3054,7 @@
 
     <!-- Home Textiles -->
     <div class="service-box" data-category="home" id="home_textiles">
-      <div class="service-icon">
-        <i class="fas fa-bed"></i>
-      </div>
+     
       
       <!-- Product Gallery -->
       <div class="product-gallery" data-product="home">
@@ -2692,6 +3086,357 @@
         <i class="fas fa-file-invoice-dollar"></i> Get Quote
       </a>
     </div>
+
+<div class="service-box" data-category="sportswear">
+      <span class="product-badge">Activewear</span>
+
+      <div class="product-gallery">
+        <img class="main-image"
+          src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=800&q=80"
+          alt="Sports Wear Manufacturing">
+<div class="image-counter">1/4</div>
+        <button class="view-gallery-btn" data-product="pants">
+          <i class="fas fa-expand"></i> View Gallery
+        </button>
+        <div class="thumbnail-grid">
+          <img class="thumbnail active"
+            src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1599058917212-d750089bc07d?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=300&q=80">
+        </div>
+      </div>
+
+      <h3>Sports Wear Collection</h3>
+      <p>Performance-driven sportswear designed for comfort, durability, and movement.</p>
+
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Gym & Fitness Wear</li>
+        <li><i class="fas fa-check-circle"></i> Tracksuits & Joggers</li>
+        <li><i class="fas fa-check-circle"></i> Moisture-Wicking Fabrics</li>
+        <li><i class="fas fa-check-circle"></i> Custom Branding & Printing</li>
+      </ul>
+<a href="#inquiry" class="btn" onclick="setProduct('Sports Wear')">
+        <i class="fas fa-file-invoice-dollar"></i> Get Quote
+      </a>
+    </div>
+
+
+  <div class="service-box" data-category="underwire">
+      <span class="product-badge">Lingerie</span>
+
+      <div class="product-gallery">
+        <img class="main-image"
+          src="https://images.unsplash.com/photo-1618354691373-2f3b5c47df60?auto=format&fit=crop&w=800&q=80"
+          alt="Ladies Underwire Bra Manufacturing">
+<div class="image-counter">1/4</div>
+        <button class="view-gallery-btn" data-product="pants">
+          <i class="fas fa-expand"></i> View Gallery
+        </button>
+        <div class="thumbnail-grid">
+          <img class="thumbnail active"
+            src="https://images.unsplash.com/photo-1618354691373-2f3b5c47df60?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=300&q=80">
+          <img class="thumbnail"
+            src="https://images.unsplash.com/photo-1600180758895-9b3c59b65f36?auto=format&fit=crop&w=300&q=80">
+        </div>
+      </div>
+
+      <h3>Ladies Underwire Collection</h3>
+      <p>Precision-crafted underwire bras with superior fit, support, and finishing.</p>
+
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Underwire & Padded Bras</li>
+        <li><i class="fas fa-check-circle"></i> Lace & Seamless Styles</li>
+        <li><i class="fas fa-check-circle"></i> Export-Quality Stitching</li>
+        <li><i class="fas fa-check-circle"></i> OEM & Private Label</li>
+      </ul>
+<a href="#inquiry" class="btn" onclick="setProduct('Ladies Underwire')">
+        <i class="fas fa-file-invoice-dollar"></i> Get Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+  <div class="section-title">
+    <h2>Our <span class="title-accent">Projects & Portfolio</span></h2>
+    <p>Explore our successful fashion projects and creative designs delivered to clients worldwide</p>
+  </div>
+
+  <!-- Projects Filter -->
+  <div class="projects-filter">
+    <button class="project-filter-btn active" data-filter="all">
+      <i class="fas fa-layer-group"></i> All Projects
+    </button>
+    <button class="project-filter-btn" data-filter="corporate">
+      <i class="fas fa-building"></i> Corporate Wear
+    </button>
+    <button class="project-filter-btn" data-filter="fashion">
+      <i class="fas fa-tshirt"></i> Fashion Collections
+    </button>
+    <button class="project-filter-btn" data-filter="sportswear">
+      <i class="fas fa-running"></i> Sportswear
+    </button>
+    <button class="project-filter-btn" data-filter="uniforms">
+      <i class="fas fa-user-tie"></i> Uniforms
+    </button>
+    <button class="project-filter-btn" data-filter="export">
+      <i class="fas fa-globe"></i> Export Projects
+    </button>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid">
+    
+    <!-- Project 1 -->
+    <div class="project-card" data-category="corporate export">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corporate Collection Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project1')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Corporate Wear</span>
+        <h3 class="project-title">Premium Corporate Collection for Tech Company</h3>
+        <p class="project-description">Complete corporate wear collection including shirts, trousers, and blazers for a multinational tech company with 5,000+ employees across 12 countries.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>5,000+ pieces manufactured</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Delivered to 12 countries</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-calendar"></i>
+            <span>Project duration: 3 months</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-user-tie"></i>
+            <span>TechCorp International</span>
+          </div>
+          <div class="project-year">2024</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card" data-category="fashion">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Collection Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project2')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Fashion Collection</span>
+        <h3 class="project-title">Summer Fashion Line for European Retailer</h3>
+        <p class="project-description">Complete summer collection featuring dresses, skirts, and tops for a leading European fashion retailer. Trend-focused designs with sustainable materials.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>8,000+ garments produced</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-leaf"></i>
+            <span>Eco-friendly materials</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-palette"></i>
+            <span>12 unique designs</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-store"></i>
+            <span>EuroStyle Retail</span>
+          </div>
+          <div class="project-year">2024</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card" data-category="sportswear export">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sportswear Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project3')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Sportswear</span>
+        <h3 class="project-title">Professional Sportswear for Athletic Brand</h3>
+        <p class="project-description">High-performance sportswear collection including compression wear, training gear, and team uniforms for an international athletic brand.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>10,000+ units delivered</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-running"></i>
+            <span>Moisture-wicking fabric</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-tshirt"></i>
+            <span>Custom team designs</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-running"></i>
+            <span>ProAthlete Brand</span>
+          </div>
+          <div class="project-year">2023</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card" data-category="uniforms">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Uniform Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project4')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Uniforms</span>
+        <h3 class="project-title">Hospitality Uniforms for Luxury Hotel Chain</h3>
+        <p class="project-description">Complete uniform collection for a 5-star hotel chain including reception, housekeeping, restaurant, and management staff across 8 properties.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>2,500+ uniforms</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-hotel"></i>
+            <span>8 hotel properties</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-star"></i>
+            <span>Premium fabrics</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-hotel"></i>
+            <span>Grand Luxury Hotels</span>
+          </div>
+          <div class="project-year">2023</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card" data-category="fashion export">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Export Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project5')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Export Project</span>
+        <h3 class="project-title">Bulk Export to US Retail Chain</h3>
+        <p class="project-description">Large-scale export project delivering 50,000+ casual wear pieces to a major US retail chain. Complete logistics and quality control management.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>50,000+ pieces</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-ship"></i>
+            <span>Container shipping</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-flag-usa"></i>
+            <span>US market compliance</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-globe-americas"></i>
+            <span>US Fashion Retail Inc.</span>
+          </div>
+          <div class="project-year">2024</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 6 -->
+    <div class="project-card" data-category="corporate uniforms">
+      <div class="project-image-container">
+        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bank Uniform Project" class="project-image" loading="lazy">
+        <div class="project-overlay">
+          <button class="project-view-btn" onclick="openProjectModal('project6')">
+            <i class="fas fa-expand"></i> View Details
+          </button>
+        </div>
+      </div>
+      <div class="project-content">
+        <span class="project-category">Corporate Uniforms</span>
+        <h3 class="project-title">Banking Sector Uniform Collection</h3>
+        <p class="project-description">Professional uniform collection for a national banking group with 200+ branches. Custom designs reflecting corporate identity and brand values.</p>
+        
+        <div class="project-details">
+          <div class="project-detail-item">
+            <i class="fas fa-check-circle"></i>
+            <span>3,000+ uniforms</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-university"></i>
+            <span>200+ bank branches</span>
+          </div>
+          <div class="project-detail-item">
+            <i class="fas fa-users"></i>
+            <span>All staff levels</span>
+          </div>
+        </div>
+        
+        <div class="project-footer">
+          <div class="project-client">
+            <i class="fas fa-university"></i>
+            <span>National Bank Group</span>
+          </div>
+          <div class="project-year">2023</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2828,6 +3573,8 @@
             <option value="jackets">Designer Jackets</option>
             <option value="home">Home Textiles</option>
             <option value="bulk">Bulk/Mixed Order</option>
+            <option value="sportwear">Sport Wear</option>
+            <option value="ladieswear">Ladies Wear</option>
           </select>
           <i class="fas validation-icon"></i>
           <div class="error-message">Please select a product category</div>
@@ -2957,6 +3704,7 @@
       <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
       <a href="#services"><i class="fas fa-chevron-right"></i> Services</a>
       <a href="#products"><i class="fas fa-chevron-right"></i> Collections</a>
+      <a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a>
       <a href="#inquiry"><i class="fas fa-chevron-right"></i> Get Quote</a>
     </div>
     <div>
@@ -2966,9 +3714,17 @@
       <a href="#hoodies"><i class="fas fa-chevron-right"></i> Hoodies</a>
       <a href="#sweat_shirts"><i class="fas fa-chevron-right"></i> Sweat Shirts</a>
       <a href="#fashion_pants"><i class="fas fa-chevron-right"></i> Fashion Pants</a>
-      <a href="#textiles"><i class="fas fa-chevron-right"></i>Home Textiles</a>
+      <a href="#home_textiles"><i class="fas fa-chevron-right"></i> Home Textiles</a>
     </div>
-  
+    <div>
+      <h3>Our Projects</h3>
+      <a href="#" onclick="openProjectModal('project1'); return false;"><i class="fas fa-chevron-right"></i> Corporate Collection</a>
+      <a href="#" onclick="openProjectModal('project2'); return false;"><i class="fas fa-chevron-right"></i> Fashion Line</a>
+      <a href="#" onclick="openProjectModal('project3'); return false;"><i class="fas fa-chevron-right"></i> Sportswear Project</a>
+      <a href="#" onclick="openProjectModal('project4'); return false;"><i class="fas fa-chevron-right"></i> Hotel Uniforms</a>
+      <a href="#" onclick="openProjectModal('project5'); return false;"><i class="fas fa-chevron-right"></i> Export Project</a>
+      <a href="#" onclick="openProjectModal('project6'); return false;"><i class="fas fa-chevron-right"></i> Banking Uniforms</a>
+    </div>
   </div>
   <div class="copyright">
     © 2026 FA Fashion & Design Apparel. All Rights Reserved. | Crafted with creativity for global fashion
@@ -3036,6 +3792,40 @@
             item.classList.add('hidden');
             setTimeout(() => {
               item.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // Projects Filter Functionality
+    const projectFilterButtons = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectFilterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        projectFilterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filterValue = this.getAttribute('data-filter');
+        
+        projectCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category');
+          const categories = cardCategories.split(' ');
+          
+          if (filterValue === 'all' || categories.includes(filterValue)) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.display = 'none';
             }, 300);
           }
         });
@@ -3712,7 +4502,8 @@
       'Fashion Pants': 'pants',
       'Designer Home Textiles': 'home',
       'Designer Jackets': 'jackets',
-      'Bulk Order Package': 'bulk'
+      'Bulk Order Package': 'bulk',
+'Ladies Underwire': 'Ladies Underwire'
     };
     
     const categorySelect = document.getElementById('productCategory');
@@ -3840,6 +4631,302 @@
   document.getElementById('successModal').addEventListener('click', function(e) {
     if (e.target === this) {
       closeModal();
+    }
+  });
+
+  // Project Data
+  const projectsData = {
+    project1: {
+      title: "Premium Corporate Collection for Tech Company",
+      category: "Corporate Wear",
+      year: "2024",
+      client: "TechCorp International",
+      description: "Complete corporate wear collection for a multinational technology company with operations across 12 countries. The project involved designing and manufacturing professional attire that reflects the company's innovative brand while ensuring comfort and durability for daily wear.",
+      mainImage: "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Project Scale": "5,000+ pieces manufactured",
+        "Delivery Locations": "12 countries across Europe and Asia",
+        "Project Duration": "3 months from design to delivery",
+        "Materials Used": "Premium cotton blends, wrinkle-resistant fabrics",
+        "Special Features": "Custom embroidery, moisture-wicking technology"
+      },
+      challenges: [
+        "Meeting strict corporate branding guidelines across different regions",
+        "Ensuring consistent quality across large production batches",
+        "Coordinating logistics for international delivery within tight deadlines"
+      ],
+      solutions: [
+        "Developed a modular design system allowing for regional variations while maintaining brand consistency",
+        "Implemented enhanced quality control checkpoints at every production stage",
+        "Partnered with international logistics specialists for streamlined delivery"
+      ]
+    },
+    
+    project2: {
+      title: "Summer Fashion Line for European Retailer",
+      category: "Fashion Collection",
+      year: "2024",
+      client: "EuroStyle Retail",
+      description: "Complete summer fashion collection for a leading European retail chain. The collection featured contemporary designs using sustainable materials, focusing on comfort, style, and environmental responsibility. Each piece was designed to be versatile for multiple occasions.",
+      mainImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Collection Size": "8,000+ garments across 12 unique designs",
+        "Sustainability": "Eco-friendly organic cotton and recycled materials",
+        "Design Process": "3-month collaborative design phase",
+        "Production Time": "4 months for full collection",
+        "Market": "Retailed across 50+ stores in Europe"
+      },
+      challenges: [
+        "Balancing sustainability goals with production costs",
+        "Meeting fast-fashion timelines with high-quality standards",
+        "Creating designs that appeal to diverse European markets"
+      ],
+      solutions: [
+        "Sourced innovative sustainable materials that met both quality and cost requirements",
+        "Optimized production workflow to reduce lead times by 30%",
+        "Conducted market research in key regions to tailor designs"
+      ]
+    },
+    
+    project3: {
+      title: "Professional Sportswear for Athletic Brand",
+      category: "Sportswear",
+      year: "2023",
+      client: "ProAthlete Brand",
+      description: "High-performance sportswear collection designed for professional athletes and fitness enthusiasts. The collection includes compression wear, training gear, and team uniforms with advanced moisture-wicking technology and ergonomic designs for optimal performance.",
+      mainImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1549060279-7e168fce7090?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Production Volume": "10,000+ units across various product lines",
+        "Technology": "Advanced moisture-wicking and compression fabrics",
+        "Customization": "Team-specific designs and color schemes",
+        "Testing": "Rigorous athletic performance testing",
+        "Distribution": "International sports retailers and team sales"
+      },
+      challenges: [
+        "Developing fabrics that maintain performance characteristics through repeated washing",
+        "Creating ergonomic designs suitable for various sports and body types",
+        "Meeting strict delivery deadlines for seasonal sports events"
+      ],
+      solutions: [
+        "Partnered with textile innovators to develop durable performance fabrics",
+        "Conducted fit testing with athletes from multiple sports disciplines",
+        "Implemented just-in-time manufacturing for optimal inventory management"
+      ]
+    },
+    
+    project4: {
+      title: "Hospitality Uniforms for Luxury Hotel Chain",
+      category: "Uniforms",
+      year: "2023",
+      client: "Grand Luxury Hotels",
+      description: "Complete uniform collection for a prestigious 5-star hotel chain. The project required designing distinct uniforms for various departments while maintaining a cohesive luxury aesthetic. Special attention was given to durability, comfort for long shifts, and elegant appearance.",
+      mainImage: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Uniform Types": "8 distinct uniform designs for different departments",
+        "Properties Served": "8 luxury hotel properties worldwide",
+        "Total Units": "2,500+ customized uniforms",
+        "Materials": "Premium fabrics with stain-resistant treatment",
+        "Features": "Comfort-enhancing designs for 12-hour shifts"
+      },
+      challenges: [
+        "Creating distinct yet cohesive designs for multiple hotel departments",
+        "Ensuring uniform durability for high-frequency laundering",
+        "Managing fittings and deliveries across multiple international locations"
+      ],
+      solutions: [
+        "Developed a design system with department-specific color coding and accessories",
+        "Used industrial-strength fabrics with enhanced wear resistance",
+        "Implemented a phased delivery system with local fitting teams"
+      ]
+    },
+    
+    project5: {
+      title: "Bulk Export to US Retail Chain",
+      category: "Export Project",
+      year: "2024",
+      client: "US Fashion Retail Inc.",
+      description: "Large-scale export project delivering casual wear to a major American retail chain. The project involved complete supply chain management from manufacturing to retail delivery, including quality control, packaging, labeling, and international logistics compliance.",
+      mainImage: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Export Volume": "50,000+ pieces across multiple product lines",
+        "Shipping Method": "Container shipping with optimized load planning",
+        "Compliance": "Full US market regulatory compliance",
+        "Quality Standards": "AQL 2.5 inspection standards",
+        "Delivery Timeline": "On-time delivery to distribution centers"
+      },
+      challenges: [
+        "Managing the complex logistics of international bulk shipping",
+        "Ensuring compliance with US import regulations and quality standards",
+        "Maintaining consistent quality across massive production runs"
+      ],
+      solutions: [
+        "Implemented advanced logistics tracking and management systems",
+        "Conducted pre-shipment inspections with US standards specialists",
+        "Established quality control checkpoints at every production stage"
+      ]
+    },
+    
+    project6: {
+      title: "Banking Sector Uniform Collection",
+      category: "Corporate Uniforms",
+      year: "2023",
+      client: "National Bank Group",
+      description: "Professional uniform collection for a national banking institution with branches across the country. The designs balance traditional banking professionalism with modern comfort and style. Special consideration was given to creating a unified brand image while accommodating different climate conditions.",
+      mainImage: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      images: [
+        "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      details: {
+        "Branch Coverage": "200+ bank branches nationwide",
+        "Staff Levels": "Uniforms for all positions from tellers to management",
+        "Climate Variations": "Seasonal variations for different regions",
+        "Brand Elements": "Corporate colors and logo integration",
+        "Comfort Features": "Ergonomic designs for customer-facing roles"
+      },
+      challenges: [
+        "Creating uniforms suitable for diverse climate conditions across the country",
+        "Designing for different banking roles while maintaining brand consistency",
+        "Managing fittings and deliveries across hundreds of locations"
+      ],
+      solutions: [
+        "Developed climate-appropriate variations using different fabric weights",
+        "Created a modular uniform system with role-specific accessories",
+        "Implemented a nationwide fitting and delivery network"
+      ]
+    }
+  };
+
+  // Open Project Modal
+  function openProjectModal(projectId) {
+    const project = projectsData[projectId];
+    if (!project) return;
+    
+    const modalBody = document.getElementById('projectModalBody');
+    
+    let detailsHTML = '';
+    for (const [key, value] of Object.entries(project.details)) {
+      detailsHTML += `
+        <div class="modal-detail-item">
+          <h4>${key}</h4>
+          <p>${value}</p>
+        </div>
+      `;
+    }
+    
+    let challengesHTML = '';
+    if (project.challenges && project.challenges.length > 0) {
+      challengesHTML = `
+        <div class="project-challenges">
+          <h4><i class="fas fa-exclamation-triangle"></i> Project Challenges</h4>
+          <ul>
+            ${project.challenges.map(challenge => `<li>${challenge}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+    
+    let solutionsHTML = '';
+    if (project.solutions && project.solutions.length > 0) {
+      solutionsHTML = `
+        <div class="project-solutions">
+          <h4><i class="fas fa-lightbulb"></i> Our Solutions</h4>
+          <ul>
+            ${project.solutions.map(solution => `<li>${solution}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+    
+    let imagesHTML = '';
+    if (project.images && project.images.length > 0) {
+      imagesHTML = `
+        <div class="project-modal-images">
+          <img src="${project.mainImage}" alt="${project.title}" class="modal-main-image">
+          <div>
+            ${project.images.slice(1).map(img => `
+              <img src="${img}" alt="${project.title}" class="modal-secondary-image">
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    
+    modalBody.innerHTML = `
+      ${imagesHTML}
+      <div class="project-info">
+        <span class="project-category">${project.category}</span>
+        <h2 class="project-modal-title">${project.title}</h2>
+        <p class="project-modal-description">${project.description}</p>
+        
+        <div class="project-modal-details">
+          ${detailsHTML}
+        </div>
+        
+        ${challengesHTML}
+        ${solutionsHTML}
+        
+        <div class="modal-actions">
+          <a href="#inquiry" class="btn" onclick="closeProjectModal()">
+            <i class="fas fa-file-invoice-dollar"></i> Request Similar Project
+          </a>
+          <button class="btn btn-view-catalog" onclick="window.open('https://wa.me/923001234567?text=Hi,%20I%20want%20to%20discuss%20a%20project%20like%20${encodeURIComponent(project.title)}', '_blank')">
+            <i class="fab fa-whatsapp"></i> Discuss Project
+          </button>
+          <button class="btn btn-outline" onclick="closeProjectModal()">
+            <i class="fas fa-times"></i> Close
+          </button>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('projectModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close Project Modal
+  function closeProjectModal() {
+    document.getElementById('projectModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on outside click
+  document.getElementById('projectModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeProjectModal();
+    }
+  });
+
+  // Keyboard navigation for modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('projectModal').classList.contains('active')) {
+      closeProjectModal();
     }
   });
 
